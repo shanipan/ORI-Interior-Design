@@ -247,14 +247,14 @@
 
             return (
                 <div className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center p-4 lightbox-overlay animate-fade-in" onClick={onClose}>
-                    <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-[70] transition-colors p-4">
+                    <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-[70] transition-colors p-2">
                         <IconX size={40} />
                     </button>
-                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-6 hover:bg-white/10 rounded-full hidden md:block" aria-label="Previous Image">
+                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 hover:bg-white/10 rounded-full hidden md:block" aria-label="Previous Image">
                         <IconChevronLeft size={60} />
                     </button>
                     <img src={image} alt="Lightbox View" className="lightbox-image shadow-2xl" onClick={(e) => e.stopPropagation()} />
-                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-6 hover:bg-white/10 rounded-full hidden md:block" aria-label="Next Image">
+                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 hover:bg-white/10 rounded-full hidden md:block" aria-label="Next Image">
                         <IconChevronRight size={60} />
                     </button>
                 </div>
@@ -281,11 +281,9 @@
                 <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#" className="flex items-center gap-4 group">
-                             {/* Logo Image */}
                              <div className={`relative ${scrolled ? 'h-10 w-10' : 'h-12 w-12'} transition-all duration-300`}>
                                 <img src={PATHS.logo} alt="ORI Logo" className={`absolute inset-0 w-full h-full object-contain transition-all duration-300 ${scrolled ? '' : 'invert brightness-0'}`} style={{ filter: scrolled ? 'none' : 'invert(1) brightness(100)' }} onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<span class="serif font-bold text-lg tracking-widest ' + (scrolled ? 'text-stone-800' : 'text-white') + '">ORI</span>'; }} />
                              </div>
-                             {/* Added Text */}
                              <div className={`flex flex-col ${scrolled ? 'text-stone-800' : 'text-white'} transition-colors duration-300`}>
                                 <span className="serif font-medium tracking-widest text-lg leading-tight">ORI</span>
                                 <span className="text-[10px] tracking-[0.15em] opacity-80 leading-tight">INTERIOR DESIGN</span>
@@ -314,7 +312,6 @@
                     </div>
                     <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
                         <FadeInSection>
-                            {/* Center Logo */}
                             <div className="flex justify-center mb-6">
                                 <img 
                                     src={PATHS.logo} 
@@ -322,20 +319,17 @@
                                     className="w-24 h-24 object-contain invert brightness-0 opacity-90" 
                                 />
                             </div>
-                            
-                            {/* Small Title */}
                             <h2 className="serif text-sm md:text-base tracking-[0.4em] mb-6 text-stone-200">
                                 ORI INTERIOR DESIGN
                             </h2>
-                            
-                            {/* Main Title - Smaller */}
-                            <h1 className="serif text-3xl md:text-5xl lg:text-6xl mb-8 tracking-wider font-light">森森室內設計</h1>
+                            <h1 className="serif text-4xl md:text-5xl lg:text-6xl mb-8 tracking-wider font-light">森森室內設計</h1>
                             <div className="w-24 h-[1px] bg-white mx-auto mb-8"></div>
-                            {/* Description - Smaller */}
-                            <p className="serif text-sm md:text-base font-light tracking-widest leading-loose text-stone-100">光，讓空間注入亮光、溫度與生命。<br />以設計為林，以光為引。</p>
+                            <p className="serif text-base md:text-lg font-light tracking-widest leading-loose text-stone-100">光，讓空間注入亮光、溫度與生命。<br />以設計為林，以光為引。</p>
                         </FadeInSection>
                     </div>
-                    <div className="absolute bottom-10 left-0 w-full text-center animate-bounce text-white/70"><span className="serif text-xs tracking-widest">SCROLL</span></div>
+                    <div className="absolute bottom-10 left-0 w-full text-center animate-bounce text-white/70">
+                        <span className="serif text-xs tracking-widest">SCROLL</span>
+                    </div>
                     <style>{`@keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }`}</style>
                 </header>
             );
@@ -394,6 +388,7 @@
             const animationRef = useRef(null);
             const [isHovered, setIsHovered] = useState(false);
 
+            // Auto scroll logic
             useEffect(() => {
                 const container = scrollContainerRef.current;
                 if (!container) return;
@@ -443,6 +438,7 @@
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                         >
+                            {/* Left Arrow Button */}
                             <button 
                                 onClick={() => scroll('left')} 
                                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 hover:bg-white rounded-full shadow-lg text-stone-800 transition-all opacity-0 group-hover:opacity-100 hidden md:block backdrop-blur-sm cursor-pointer"
@@ -451,6 +447,7 @@
                                 <IconChevronLeft size={24} />
                             </button>
 
+                            {/* Scroll Container */}
                             <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 px-6 md:px-0 pb-8 no-scrollbar">
                                 {project.images.map((img, index) => (
                                     <div key={index} className="min-w-[85vw] md:min-w-[600px] aspect-[4/3] md:aspect-auto md:h-[400px] flex-shrink-0 relative group/item overflow-hidden rounded-sm shadow-md bg-stone-200 cursor-pointer" onClick={() => onImageClick(project.id, index)}>
@@ -464,6 +461,7 @@
                                 ))}
                             </div>
 
+                            {/* Right Arrow Button */}
                             <button 
                                 onClick={() => scroll('right')} 
                                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 hover:bg-white rounded-full shadow-lg text-stone-800 transition-all opacity-0 group-hover:opacity-100 hidden md:block backdrop-blur-sm cursor-pointer"
