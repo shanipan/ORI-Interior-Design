@@ -203,41 +203,47 @@
             }
         ];
 
+        // --- Services Data (Updated with 6 items) ---
         const services = [
             {
                 id: '01',
                 title: '室內設計 Interior Design',
-                subtitle: '適合：新成屋客變、規劃完整生活機能',
                 desc: '從格局配置、傢俱尺度到櫃體與燈光設計，我們以光影與動線為基礎，建立能呼吸的空間秩序。',
-                footer: '設計不只為了好看，而是每個需求都有安放的位置。',
-                items: ['格局與動線設計', '系統櫃／木作規劃', '配色與材質搭配', '照明配置與光源設計', '3D配置/施工圖面繪製', '完工後軟裝整合佈置']
+                footer: '設計不只為了好看，而是每個需求都有安放的位置。'
             },
             {
                 id: '02',
-                title: '輕裝修（輕裝潢）Light Renovation',
-                subtitle: '適合：不大改格局，但想提升質感與風格',
-                desc: '當家已有雛形，只差一點韻味與呼吸感，我們以最小工程介入、最大氛圍提升為原則，透過材質、色彩與局部改造，讓空間煥然一新。',
-                footer: '不推翻過去，只補上剛剛好的美。',
-                items: ['局部粉刷／色彩調整', '燈具、壁面、天花更新', '櫃體整理或局部改造', '傢俱家飾風格配置']
+                title: '室內裝修 Interior Construction',
+                desc: '設計是靈魂，工程是骨架。我們擁有經驗豐富的專業施工團隊，嚴格把關每一道工序與細節。從基礎工程到表面飾材，以職人精神將設計藍圖精準轉化為堅實舒適的居住空間。',
+                footer: '專注細節的工藝，堆砌出長久的安心。'
             },
             {
                 id: '03',
-                title: '老屋翻新／老屋改造 Old House',
-                subtitle: '適合：老公寓、透天、格局與機能需重整者',
+                title: '老屋翻新與改造 Old House',
                 desc: '老屋的挑戰，往往是光線、動線與基礎使用層面。我們保留房子的故事，更新結構與生活品質，讓舊房子重新清新、有光、有呼吸。',
-                footer: '我們不抹去痕跡，而是讓它重新發亮。',
-                items: ['水電與管線更新', '防漏 / 防黴改善', '採光調整 / 隔間優化', '收納整合 × 動線重整', '建材更新 × 全新風格建立']
+                footer: '我們不抹去痕跡，而是讓它重新發亮。'
             },
             {
                 id: '04',
-                title: '軟裝與家飾佈置 Soft Styling',
-                subtitle: '',
-                desc: '家的靈魂藏在抱枕、織品、花植與光影裡。我們以層次與留白整理細節，為家添上溫度。',
-                footer: '空間因硬裝成立，因軟裝開始有生命。',
-                items: ['家飾風格統一規劃', '物件／燈具／織品選配', '擺拍級生活層次佈置']
+                title: '輕裝潢 Light Renovation',
+                desc: '當家已有雛形，只差一點韻味與呼吸感，我們以最小工程介入、最大氛圍提升為原則，透過材質、色彩與局部改造，讓空間煥然一新。',
+                footer: '不推翻過去，只補上剛剛好的美。'
+            },
+             {
+                id: '05',
+                title: '預售屋客變 Pre-sale Customization',
+                desc: '在建築藍圖階段介入，為您預先規劃格局動線、水電配置與材質選用。我們協助您與建商進行專業溝通，大幅降低交屋後的二次施工成本，讓家從基底就完全貼合您的生活習慣。',
+                footer: '未雨綢繆的智慧，成就無負擔的理想家。'
+            },
+            {
+                id: '06',
+                title: '軟裝與家飾服務 Interior Decoration',
+                desc: '在硬體定義結構後，軟裝與家飾，為空間添上溫度。不只是讓家變漂亮，是讓回家變成值得期待的事。',
+                footer: '空間因硬裝成立，因軟裝開始有生命。'
             }
         ];
 
+        // Service Steps
         const serviceSteps = [
             { id: 1, title: "預約諮詢", desc: "初步了解需求、風格偏好與預算規劃。", icon: IconConsult },
             { id: 2, title: "現場丈量", desc: "實地勘查空間現況，進行精確丈量與環境評估，丈量提案費$3000之後全額抵扣於設計費。", icon: IconRuler },
@@ -307,8 +313,10 @@
             const navLinks = [
                 { name: '關於森森', href: '#philosophy' },
                 { name: '作品賞析', href: '#portfolio' },
+                { name: '服務範圍', href: '#services' }, 
                 { name: '設計團隊', href: '#team' },
                 { name: '服務流程', href: '#service-process' },
+                { name: '軟裝服務', href: 'https://shanipan.github.io/ORI-Interior-Decoration/', external: true }, // Updated Link
                 { name: '聯絡我們', href: '#contact' }
             ];
 
@@ -327,14 +335,35 @@
                              </div>
                         </a>
                         <div className={`hidden md:flex space-x-12 ${scrolled ? 'text-stone-800' : 'text-white'}`}>
-                            {navLinks.map((link) => (<a key={link.name} href={link.href} className="serif text-sm tracking-widest hover:opacity-60 transition-opacity">{link.name}</a>))}
+                            {navLinks.map((link) => (
+                                <a 
+                                    key={link.name} 
+                                    href={link.href} 
+                                    target={link.external ? "_blank" : "_self"}
+                                    rel={link.external ? "noopener noreferrer" : ""}
+                                    className="serif text-sm tracking-widest hover:opacity-60 transition-opacity"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
                         </div>
                         <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden ${scrolled ? 'text-stone-800' : 'text-white'}`}>
                             {isOpen ? <IconX size={28} /> : <IconMenu size={28} />}
                         </button>
                     </div>
                     <div className={`fixed inset-0 bg-stone-900/95 z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-500 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                        {navLinks.map((link) => (<a key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="serif text-2xl text-white tracking-widest hover:text-stone-400">{link.name}</a>))}
+                        {navLinks.map((link) => (
+                            <a 
+                                key={link.name} 
+                                href={link.href} 
+                                onClick={() => setIsOpen(false)} 
+                                target={link.external ? "_blank" : "_self"}
+                                rel={link.external ? "noopener noreferrer" : ""}
+                                className="serif text-2xl text-white tracking-widest hover:text-stone-400"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
                     </div>
                 </nav>
             );
@@ -439,13 +468,12 @@
                         if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
                             container.scrollLeft = 0;
                         } else {
-                            container.scrollLeft += 0.5; // Slow and smooth speed
+                            container.scrollLeft += 0.5;
                         }
                     }
                     animationRef.current = requestAnimationFrame(animate);
                 };
 
-                // Only start animation if NOT hovered
                 if (!isHovered) {
                     animationRef.current = requestAnimationFrame(animate);
                 } else {
@@ -492,7 +520,7 @@
                             {/* Scroll Container - Optimized for mobile */}
                             <div ref={scrollContainerRef} className="flex overflow-x-auto gap-4 md:gap-6 px-6 md:px-0 pb-8 no-scrollbar">
                                 {project.images.map((img, index) => (
-                                    // IMPORTANT: Mobile uses aspect-video (16:9) to reduce crop, Desktop uses fixed height
+                                    // Use aspect-video (16:9) for mobile to show wider content, avoiding zoom-in crop
                                     <div 
                                         key={index} 
                                         className="min-w-[85vw] md:min-w-[600px] aspect-video md:aspect-auto md:h-[400px] flex-shrink-0 relative group/item overflow-hidden rounded-sm shadow-md bg-stone-200 cursor-pointer" 
@@ -542,9 +570,47 @@
             );
         };
 
+        // Services Component - Updated for cleaner look (no list items)
+        const Services = () => {
+            return (
+                <section id="services" className="py-24 bg-white relative">
+                    <div className="container mx-auto max-w-6xl px-6">
+                        <FadeInSection>
+                            <div className="text-center mb-20">
+                                <span className="serif text-stone-400 text-sm tracking-widest">SERVICES</span>
+                                <h2 className="serif text-4xl text-stone-800 mt-4">服務範圍</h2>
+                                <div className="w-12 h-[1px] bg-stone-300 mx-auto mt-6 mb-6"></div>
+                            </div>
+                        </FadeInSection>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {services.map((service) => (
+                                <FadeInSection key={service.id} className="bg-stone-50 p-10 rounded-sm border border-stone-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col h-full">
+                                    <div className="flex items-baseline gap-3 mb-6">
+                                        <span className="serif text-4xl text-stone-300 font-light group-hover:text-stone-800 transition-colors">{service.id}</span>
+                                        <h3 className="serif text-xl text-stone-800 font-medium">{service.title}</h3>
+                                    </div>
+                                    
+                                    <p className="text-stone-600 font-light leading-loose mb-8 text-justify text-sm flex-grow">
+                                        {service.desc}
+                                    </p>
+                                    
+                                    <div className="pt-6 border-t border-stone-200 mt-auto">
+                                        <p className="text-stone-400 italic text-xs font-serif text-center">
+                                            "{service.footer}"
+                                        </p>
+                                    </div>
+                                </FadeInSection>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
         const Team = () => {
             return (
-                <section id="team" className="py-24 bg-white border-t border-stone-100">
+                <section id="team" className="py-24 bg-stone-50 border-t border-stone-100">
                     <div className="container mx-auto max-w-5xl px-6">
                         <div className="text-center mb-20">
                             <span className="serif text-stone-400 text-sm tracking-widest">DESIGNER</span>
@@ -553,7 +619,7 @@
                         </div>
                         
                         <FadeInSection>
-                            <div className="flex flex-col md:flex-row items-center gap-12 bg-stone-50 p-8 md:p-12 rounded-sm shadow-sm">
+                            <div className="flex flex-col md:flex-row items-center gap-12 bg-white p-8 md:p-12 rounded-sm shadow-sm">
                                 {/* Photo */}
                                 <div className="w-full md:w-1/3 aspect-[3/4] overflow-hidden rounded-sm shadow-md">
                                     <img 
@@ -600,7 +666,7 @@
 
         const ServiceProcess = () => {
             return (
-                <section id="service-process" className="py-24 bg-stone-50 border-t border-stone-100">
+                <section id="service-process" className="py-24 bg-white border-t border-stone-100">
                     <div className="container mx-auto max-w-6xl px-6">
                          <div className="text-center mb-20"><span className="serif text-stone-400 text-sm tracking-widest">SERVICE PROCESS</span><h2 className="serif text-4xl text-stone-800 mt-4">服務流程</h2><div className="w-12 h-[1px] bg-stone-300 mx-auto mt-6"></div></div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
@@ -609,7 +675,7 @@
                                 return (
                                     <FadeInSection key={step.id} className="relative group">
                                         <div className="mb-6 flex justify-center lg:justify-start">
-                                            <div className="p-4 bg-white rounded-full group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 text-stone-800 border border-stone-100 shadow-sm">
+                                            <div className="p-4 bg-stone-50 rounded-full group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 text-stone-800 border border-stone-100 shadow-sm">
                                                  <IconComponent size={32} />
                                             </div>
                                         </div>
@@ -627,7 +693,7 @@
 
         const LocationMap = () => {
             return (
-                <section className="bg-stone-100 py-24">
+                <section className="bg-stone-50 py-24">
                     <div className="container mx-auto px-6 max-w-6xl">
                         <div className="text-center mb-12">
                             <span className="serif text-stone-400 text-sm tracking-widest">LOCATION</span>
@@ -659,14 +725,63 @@
                     <div className="container mx-auto px-6 max-w-4xl">
                         <FadeInSection>
                             <div className="bg-stone-50 p-8 md:p-16 rounded-sm shadow-sm text-center border border-stone-100">
-                                <h2 className="serif text-3xl md:text-4xl text-stone-800 mb-8">開始您的森活</h2>
-                                <p className="text-stone-600 mb-12 font-light leading-relaxed max-w-lg mx-auto">每一個空間，在光的照耀下都將迎來屬於它的光亮時刻。<br/>期待與您一同探索空間的可能性。</p>
-                                <div className="grid md:grid-cols-3 gap-8 mb-12">
-                                    <div className="flex flex-col items-center group"><div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm"><IconPhone size={20} /></div><h3 className="serif text-lg mb-2">電話聯絡</h3><p className="text-stone-500 font-light text-sm">03-582-8096<br/>0975912230</p></div>
-                                    <div className="flex flex-col items-center group"><div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm"><IconMail size={20} /></div><h3 className="serif text-lg mb-2">電子郵件</h3><p className="text-stone-500 font-light text-sm">joey19860324@gmail.com</p></div>
-                                    <div className="flex flex-col items-center group"><div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm"><IconMapPin size={20} /></div><h3 className="serif text-lg mb-2">服務地區</h3><p className="text-stone-500 font-light text-sm">台北市 / 新北市 / 桃園市 / 新竹縣市 /</p></div>
+                                {/* Content Section */}
+                                <h2 className="serif text-3xl md:text-4xl text-stone-800 mb-6 leading-tight">
+                                    開始您的森活<br/>
+                                    <span className="text-xl md:text-2xl block mt-4 font-light">每一個空間，在光的照耀下<br/>都將迎來屬於它的光亮時刻。</span>
+                                </h2>
+                                <p className="text-stone-600 mb-8 font-light leading-relaxed max-w-lg mx-auto">
+                                    探索一份只屬於你的風格分析，<br/>
+                                    看見你的偏愛、習慣與生活氣息。<br/>
+                                    只需幾分鐘，就能找到適合你家的方向與指引。<br/>
+                                    走進你的理想之家...
+                                </p>
+
+                                {/* Button Style */}
+                                <a 
+                                    href="mailto:joey19860324@gmail.com"
+                                    className="inline-block px-12 py-4 bg-stone-800 text-white serif tracking-widest hover:bg-stone-700 transition-colors duration-300 rounded-sm mb-6 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
+                                >
+                                    開始測試・預約諮詢 ➝
+                                </a>
+                                <p className="text-stone-400 text-xs font-light mb-12">
+                                    完成測驗後，我們將主動與您聯繫
+                                </p>
+
+                                <div className="w-full h-[1px] bg-stone-200 mb-12"></div>
+
+                                {/* Contact Info Grid */}
+                                <div className="grid md:grid-cols-3 gap-8">
+                                    <div className="flex flex-col items-center group">
+                                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                            <IconPhone size={20} />
+                                        </div>
+                                        <h3 className="serif text-lg mb-2">電話聯絡</h3>
+                                        <p className="text-stone-500 font-light text-sm leading-relaxed">
+                                            03-582-8096<br/>
+                                            0975912230
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col items-center group">
+                                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                            <IconMail size={20} />
+                                        </div>
+                                        <h3 className="serif text-lg mb-2">電子郵件</h3>
+                                        <p className="text-stone-500 font-light text-sm">
+                                            joey19860324@gmail.com
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col items-center group">
+                                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-stone-800 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                            <IconMapPin size={20} />
+                                        </div>
+                                        <h3 className="serif text-lg mb-2">服務地區</h3>
+                                        <p className="text-stone-500 font-light text-sm leading-relaxed">
+                                            台北市 / 新北市 / <br className="hidden md:block"/>
+                                            桃園市 / 新竹縣市
+                                        </p>
+                                    </div>
                                 </div>
-                                <a href="mailto:joey19860324@gmail.com" className="inline-block px-10 py-4 bg-stone-800 text-white serif tracking-widest hover:bg-stone-700 transition-colors duration-300 rounded-sm">預約諮詢</a>
                             </div>
                         </FadeInSection>
                     </div>
