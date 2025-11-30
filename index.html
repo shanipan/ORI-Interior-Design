@@ -291,12 +291,13 @@
                     <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-[70] transition-colors p-2">
                         <IconX size={40} />
                     </button>
-                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full" aria-label="Previous Image">
-                        <IconChevronLeft size={60} className="md:w-14 md:h-14" />
+                    {/* Force arrows to be visible on mobile by removing 'hidden md:block' */}
+                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-[70] transition-colors p-4 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm" aria-label="Previous Image">
+                        <IconChevronLeft size={40} />
                     </button>
                     <img src={image} alt="Lightbox View" className="lightbox-image shadow-2xl" onClick={(e) => e.stopPropagation()} />
-                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full" aria-label="Next Image">
-                        <IconChevronRight size={60} className="md:w-14 md:h-14" />
+                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-[70] transition-colors p-4 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm" aria-label="Next Image">
+                        <IconChevronRight size={40} />
                     </button>
                 </div>
             );
@@ -517,10 +518,11 @@
                                 <IconChevronLeft size={28} />
                             </button>
 
-                            {/* Scroll Container - Optimized for mobile (height-based) */}
+                            {/* Scroll Container - MOBILE FILMSTRIP MODE: Fixed Height, Auto Width */}
                             <div ref={scrollContainerRef} className="flex overflow-x-auto gap-4 md:gap-6 px-6 md:px-0 pb-8 no-scrollbar">
                                 {project.images.map((img, index) => (
-                                    // Use fixed height, auto width for true filmstrip
+                                    // KEY CHANGE: h-[280px] (mobile) / h-[400px] (desktop) + w-auto + object-cover
+                                    // This allows images to keep their natural aspect ratio without being cropped significantly
                                     <div 
                                         key={index} 
                                         className="h-[280px] md:h-[400px] w-auto flex-shrink-0 relative group/item overflow-hidden rounded-sm shadow-md bg-stone-200 cursor-pointer" 
@@ -529,7 +531,7 @@
                                         <img 
                                             src={`${project.path}${img}`} 
                                             alt={`${project.title} - ${index + 1}`} 
-                                            className="h-full w-auto max-w-[85vw] md:max-w-none object-cover transition-transform duration-700 group-hover/item:scale-105" 
+                                            className="h-full w-auto max-w-none object-cover transition-transform duration-700 group-hover/item:scale-105" 
                                             onError={(e) => { 
                                                 e.target.style.display = 'none'; 
                                                 e.target.parentElement.classList.add('flex', 'items-center', 'justify-center', 'text-stone-500', 'text-xs', 'bg-stone-100', 'p-4', 'text-center'); 
