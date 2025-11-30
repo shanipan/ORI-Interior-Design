@@ -291,11 +291,11 @@
                     <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-[70] transition-colors p-2">
                         <IconX size={40} />
                     </button>
-                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full hidden md:block" aria-label="Previous Image">
+                    <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full" aria-label="Previous Image">
                         <IconChevronLeft size={60} className="md:w-14 md:h-14" />
                     </button>
                     <img src={image} alt="Lightbox View" className="lightbox-image shadow-2xl" onClick={(e) => e.stopPropagation()} />
-                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full hidden md:block" aria-label="Next Image">
+                    <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[70] transition-colors p-4 md:p-6 hover:bg-white/10 rounded-full" aria-label="Next Image">
                         <IconChevronRight size={60} className="md:w-14 md:h-14" />
                     </button>
                 </div>
@@ -517,18 +517,19 @@
                                 <IconChevronLeft size={28} />
                             </button>
 
-                            {/* Scroll Container - Optimized for mobile (aspect-video) */}
+                            {/* Scroll Container - Optimized for mobile (height-based) */}
                             <div ref={scrollContainerRef} className="flex overflow-x-auto gap-4 md:gap-6 px-6 md:px-0 pb-8 no-scrollbar">
                                 {project.images.map((img, index) => (
+                                    // Use fixed height, auto width for true filmstrip
                                     <div 
                                         key={index} 
-                                        className="min-w-[85vw] md:min-w-[600px] h-[350px] md:h-[400px] flex-shrink-0 relative group/item overflow-hidden rounded-sm shadow-md bg-stone-200 cursor-pointer" 
+                                        className="h-[280px] md:h-[400px] w-auto flex-shrink-0 relative group/item overflow-hidden rounded-sm shadow-md bg-stone-200 cursor-pointer" 
                                         onClick={() => onImageClick(project.id, index)}
                                     >
                                         <img 
                                             src={`${project.path}${img}`} 
                                             alt={`${project.title} - ${index + 1}`} 
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-105" 
+                                            className="h-full w-auto max-w-[85vw] md:max-w-none object-cover transition-transform duration-700 group-hover/item:scale-105" 
                                             onError={(e) => { 
                                                 e.target.style.display = 'none'; 
                                                 e.target.parentElement.classList.add('flex', 'items-center', 'justify-center', 'text-stone-500', 'text-xs', 'bg-stone-100', 'p-4', 'text-center'); 
@@ -790,6 +791,7 @@
             );
         };
 
+        // Footer Component - Optimized for minimal height
         const Footer = () => {
             return (
                 <footer className="bg-[#1c1c1c] text-stone-400 py-8 border-t border-stone-800"> {/* Reduced padding */}
@@ -828,7 +830,7 @@
                             </div>
 
                             {/* Socials Row */}
-                            <div className="flex gap-6 opacity-60">
+                            <div className="flex gap-6 opacity-60 scale-90">
                                 <a href="#" className="hover:text-white transition-all transform hover:scale-110">
                                     <IconInstagram size={18} />
                                 </a>
